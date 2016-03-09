@@ -8,9 +8,11 @@ import subprocess
 import json
 import sys, getopt, argparse, os.path, math
 from sys import platform as _platform
+import requests
 
 CURRENT_DIR=os.getcwd()
 LOCAL_DIR_DATA = CURRENT_DIR + '/data'
+LOCAL_GRAFANA_FILE = CURRENT_DIR + '/tests/test.json'
 
 class StreamLineBuildGenerator(object):
     def __init__(self, json_data):
@@ -152,6 +154,22 @@ def test_jti_agent():
     points = list(result.get_points())
 
     assert len(points) >= 1
+
+
+def test_grafana_running():
+    url = 'http://127.0.0.1:3000/api/dashboards/db'
+    json_data = open(LOCAL_GRAFANA_FILE)
+    resp = requests.post(
+        url=url,
+        auth=('admin', 'admin'),
+        json=json.load(json_data),
+        headers={'Content-Type': 'application/json; charset=UTF-8'}
+    )
+    if resp.status_code != 200:
+        print "ERROR: " + str(resp.status_code)
+        assert 0
+
+    assert 1
 
 
 def teardown_module():
