@@ -151,7 +151,7 @@ def test_jti_agent():
     result = db.query(query)
     points = list(result.get_points())
 
-    assert len(points) > 1
+    assert len(points) >= 1
 
 
 def teardown_module():
