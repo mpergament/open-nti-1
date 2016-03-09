@@ -9,6 +9,9 @@ import json
 import sys, getopt, argparse, os.path, math
 from sys import platform as _platform
 
+CURRENT_DIR=os.getcwd()
+LOCAL_DIR_DATA = CURRENT_DIR + '/data'
+
 class StreamLineBuildGenerator(object):
     def __init__(self, json_data):
         self.__dict__ = json.loads(json_data)
@@ -41,7 +44,7 @@ elif _platform == "darwin":
 
     url = "https://" + dockerip + ":2376"
     print "URL: " + url
-    c = Client(base_url=url, tls=tls_config)
+    c = Client(base_url=url, tls=tls_config, version="1.20")
 elif _platform == "win32":
     exit
 
@@ -111,3 +114,46 @@ def test_collection_agent():
     points = list(result.get_points())
 
     assert len(points) == 1 and points[0]['mean'] == 16
+
+
+def test_start_tcpreplay_container():
+    global TCP_REPLAY_CONTAINER_ID
+
+    # TODO add tear down of existing container if exist
+
+    container = c.create_container(
+        image='dgarros/tcpreplay',
+        command='/usr/bin/tcpreplay --loop 1000 --intf1=eth0 /data/output.pcap',
+        name='tcpreplay',
+        detach=True,
+        volumes=[
+            '/data'
+        ],
+        host_config=c.create_host_config(
+            binds=[
+                LOCAL_DIR_DATA + ':/data',
+            ]
+        )
+    )
+
+    c.start(container)
+
+    TCP_REPLAY_CONTAINER_ID = c.inspect_container('tcpreplay')['Id']
+
+    # Wait few sec for the container to start
+    time.sleep(10)
+
+    assert c.inspect_container('tcpreplay')['Name'] == '/tcpreplay'
+
+
+def test_jti_agent():
+    query = 'SELECT "value" FROM "jnpr.jvision" WHERE  "type" = \'egress_stats.if_pkts\';'
+    result = db.query(query)
+    points = list(result.get_points())
+
+    assert len(points) > 1
+
+
+# def teardown_module():
+#     c.stop(container=TCP_REPLAY_CONTAINER_ID)
+#     c.remove_container(container=TCP_REPLAY_CONTAINER_ID)
