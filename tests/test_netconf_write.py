@@ -154,6 +154,6 @@ def test_jti_agent():
     assert len(points) > 1
 
 
-# def teardown_module():
-#     c.stop(container=TCP_REPLAY_CONTAINER_ID)
-#     c.remove_container(container=TCP_REPLAY_CONTAINER_ID)
+def teardown_module():
+    c.stop(container=TCP_REPLAY_CONTAINER_ID)
+    c.remove_container(container=TCP_REPLAY_CONTAINER_ID)
