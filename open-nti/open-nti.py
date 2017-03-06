@@ -3,8 +3,6 @@
 # Authors: efrain@juniper.net psagrera@juniper.net
 # Version 2.0  20160124
 
-import sys
-sys.path.append('/opt/open-nti/tests')
 from datetime import datetime # In order to retreive time and timespan
 from datetime import timedelta # In order to retreive time and timespan
 from influxdb import InfluxDBClient
@@ -83,7 +81,7 @@ def get_latest_datapoints(**kwargs):
     dbclient.switch_database(db_name)
     results = {}
     if db_schema == 1:
-        query = "select * from /%s\./ GROUP BY * ORDER BY time DESC limit 1 " % (kwargs['host'])
+        query = "select * from /%s\./ ORDER BY time DESC limit 1 " % (kwargs['host'])
     elif db_schema == 2:
         query = "select * from \"%s\" WHERE device = '%s' GROUP BY * ORDER BY time DESC limit 1 " % ('jnpr.collector',kwargs['host'])
     elif db_schema == 3:
@@ -94,7 +92,6 @@ def get_latest_datapoints(**kwargs):
 
     results = dbclient.query(query)
     return results
-
 
 def get_target_hosts():
     my_target_hosts = {}
@@ -124,7 +121,38 @@ def get_credentials(my_host):
         for my_host_tag in my_host_tags.strip().split():
             for credential_tag in credentials[credential]["tags"].split():
                 if re.search(my_host_tag, credential_tag, re.IGNORECASE):
-                    return credentials[credential]["username"], credentials[credential]["password"]
+                    if ("username" in credentials[credential].keys()):
+                        if ("method" in credentials[credential].keys()):
+                            if (credentials[credential]["method"] == "key"):
+                                if ("key_file" in credentials[credential].keys()):
+                                    return credentials[credential]["username"], "", credentials[credential]["method"], credentials[credential]["key_file"]
+                                else:
+                                    logger.error("Missing key_file information")
+                                    sys.exit(0)
+
+                            elif (credentials[credential]["method"] == "enc_key"):
+                                if ("key_file" in credentials[credential].keys()):
+                                    if ("password" in credentials[credential].keys()):
+                                        return credentials[credential]["username"], credentials[credential]["password"], credentials[credential]["method"], credentials[credential]["key_file"]
+                                    else:
+                                        logger.error("Missing password information")
+                                        sys.exit(0)
+                                else:
+                                    logger.error("Missing key_file information")
+                            elif (credentials[credential]["method"] == "password"):
+                                return credentials[credential]["username"], credentials[credential]["password"], credentials[credential]["method"], ""
+                            else:
+                                logger.error("Unknown authentication method found")
+                                sys.exit(0)
+                        else:
+                            if ("password" in credentials[credential].keys()):
+                                return credentials[credential]["username"], credentials[credential]["password"], "password", ""
+                            else:
+                                logger.error("Missing password information")
+                                sys.exit(0)
+                    else:
+                        logger.error("Missing username information")
+                        sys.exit(0)
 
 def execute_command(jdevice,command):
     format = "text"
@@ -140,8 +168,9 @@ def execute_command(jdevice,command):
         command_result = jdevice.rpc.cli(command_tmp, format="xml")
     except RpcError as err:
         rpc_error = err.__repr__()
-        logger.error("Error found executing command: %s, error: %s:", command ,rpc_error)
+        logger.error("Error found on <%s> executing command: %s, error: %s:", jdevice.hostname, command ,rpc_error)
         return False
+
     if format == "text":
         # We need to confirm that root tag in command_result is <output> if not then raise exception and skip
         return command_result.text
@@ -268,7 +297,7 @@ def get_metadata_and_add_datapoint(datapoints,**kwargs):
     # Calculating delta values (only applies for numeric values)
     delta = 0
     latest_value = ''
-    if type (value) != str:
+    if (type (value) != str):
 
         points=[]
         if (db_schema == 1):
@@ -344,9 +373,10 @@ def parse_result(host,target_command,result,datapoints,latest_datapoints,kpi_tag
                                 logger.debug('[%s]: Looking for a match: %s', host, match["xpath"])
                                 if xml_data.xpath(match["xpath"]):
                                     value_tmp = xml_data.xpath(match["xpath"])[0].text.strip()
+                                    logger.debug('[%s]: Match found for (%s) with value (%s)', host, match["xpath"],value_tmp)
                                     get_metadata_and_add_datapoint(datapoints=datapoints,match=match,value_tmp=value_tmp,latest_datapoints=latest_datapoints,host=host,kpi_tags=kpi_tags)
                                 else:
-                                    logger.debug('No match found: %s', match["xpath"])
+                                    logger.debug('[%s]: No match found: %s', host, match["xpath"])
                                     if 'default-if-missing' in match.keys():
                                         logger.debug('Inserting default-if-missing value: %s', match["default-if-missing"])
                                         value_tmp = match["default-if-missing"]
@@ -441,7 +471,6 @@ def parse_result(host,target_command,result,datapoints,latest_datapoints,kpi_tag
     if (not(parser_found)):
         logger.error('[%s]: ERROR: Parser not found for command: %s', host, target_command)
 
-
 def collector(**kwargs):
 
     for host in kwargs["host_list"]:
@@ -450,8 +479,8 @@ def collector(**kwargs):
 #        if ((db_schema == 1) and (not(use_hostname))):
         if (not(use_hostname)):
             latest_datapoints = get_latest_datapoints(host=host)
-            logger.info("Latest Datapoints are:")
-            logger.info(pformat(latest_datapoints))
+            logger.debug("Latest Datapoints are:")
+            logger.debug(pformat(latest_datapoints))
 
         #    kpi_tags = get_host_base_tags(host=host)
         # Check host tag to identify what kind of connections will be used (ej junos / others  / etc)
@@ -466,16 +495,22 @@ def collector(**kwargs):
             timestamp_tracking={}
             timestamp_tracking['collector_start'] = int(datetime.today().strftime('%s'))
             # Establish connection to hosts
-            user, passwd = get_credentials(host)
+            user, passwd, authMethod,authKey_file = get_credentials(host)
             if dynamic_args['test']:
                 #Open an emulated Junos device instead of connecting to the real one
                 _rpc_reply_dict = rpc_reply_dict()
-                _rpc_reply_dict['test'] = 1
+                _rpc_reply_dict['dir'] = BASE_DIR_INPUT
+
                 jdev = mocked_device(_rpc_reply_dict)
                 # First collect all kpi in datapoints {} then at the end we insert them into DB (performance improvement)
                 connected = True
             else:
-                jdev = Device(user=user, host=host, password=passwd, gather_facts=False, auto_probe=True, port=22)
+                if authMethod in "key":
+                    jdev = Device(user=user, host=host, ssh_private_key_file=authKey_file, gather_facts=False, auto_probe=True, port=22)
+                elif authMethod in "enc_key":
+                    jdev = Device(user=user, host=host, ssh_private_key_file=authKey_file, password=passwd, gather_facts=False, auto_probe=True, port=22)
+                else: # Default is 
+                    jdev = Device(user=user, host=host, password=passwd, gather_facts=False, auto_probe=True, port=22)
                 for i in range(1, max_connection_retries+1):
                     try:
                         jdev.open()
@@ -490,7 +525,6 @@ def collector(**kwargs):
                         else:
                             logging.exception(e)
                             connected = False  # Notify about the specific problem with the host BUT we need to continue with our list
-            # First collect all kpi in datapoints {} then at the end we insert them into DB (performance improvement)
             # First collect all kpi in datapoints {} then at the end we insert them into DB (performance improvement)
             if connected:
                 datapoints = []
@@ -526,8 +560,8 @@ def collector(**kwargs):
 #                            logger.info("Latest Datapoints are:")
 #                            logger.info(pformat(latest_datapoints))
                         latest_datapoints = get_latest_datapoints(host=host)
-                        logger.info("Latest Datapoints are:")
-                        logger.info(pformat(latest_datapoints))
+                        logger.debug("Latest Datapoints are:")
+                        logger.debug(pformat(latest_datapoints))
                     else:
                         logger.info('[%s]: Host will be referenced as : %s', host, host)
 
@@ -551,21 +585,59 @@ def collector(**kwargs):
                         parse_result(host,target_command,result,datapoints,latest_datapoints,kpi_tags)
                         time.sleep(delay_between_commands)
 
-                if dynamic_args['test']:
-                    print "Close emulated device"
-                else:
+                try:
                     jdev.close()
+                    time.sleep(0.5)
+                except Exception, e:
+                    print "ERROR: Something wrong happens when closing the connection with the device"
+                    logging.exception(e)
 
                 timestamp_tracking['collector_cli_ends'] = int(datetime.today().strftime('%s'))
                 logger.info('[%s]: timestamp_tracking - CLI collection %s', host, timestamp_tracking['collector_cli_ends']-timestamp_tracking['collector_cli_start'])
+                timestamp_tracking['collector_ends'] = int(datetime.today().strftime('%s'))
+
+                # Add open-nti internal kpi 
+                collection_time = timestamp_tracking['collector_ends']-timestamp_tracking['collector_start']
+                #kpi_tags['device']=host
+                kpi_tags['stats']="collection-time"
+                match={}
+                match["variable-name"]="open-nti-stats"
+                value_tmp =collection_time
+                # We'll add a dummy kpi in oder to have at least one fixed kpi with version/platform data.
+                get_metadata_and_add_datapoint(datapoints=datapoints,match=match,value_tmp=value_tmp,latest_datapoints=latest_datapoints,host=host,kpi_tags=kpi_tags)
+
+                #kpi_tags['device']=host
+                kpi_tags['stats']="collection-successful"
+                match={}
+                match["variable-name"]="open-nti-stats"
+                value_tmp = 1
+                # We'll add a dummy kpi in oder to have at least one fixed kpi with version/platform data.
+                get_metadata_and_add_datapoint(datapoints=datapoints,match=match,value_tmp=value_tmp,latest_datapoints=latest_datapoints,host=host,kpi_tags=kpi_tags)
+
+
 
                 if datapoints:   # Only insert datapoints if there is any :)
                     insert_datapoints(datapoints)
 
-                timestamp_tracking['collector_ends'] = int(datetime.today().strftime('%s'))
-                logger.info('[%s]: timestamp_tracking - total collection %s', host, timestamp_tracking['collector_ends']-timestamp_tracking['collector_start'])
+                
+                logger.info('[%s]: timestamp_tracking - total collection %s', host, collection_time)
             else:
                 logger.error('[%s]: Skipping host due connectivity issue', host)
+
+                datapoints = []
+                latest_datapoints = get_latest_datapoints(host=host)
+                # By default execute show version in order to get version and platform as default tags for all kpi related to this host
+                kpi_tags['device']=host
+                kpi_tags['stats']="collection-failure"
+                match={}
+                match["variable-name"]="open-nti-stats"
+                value_tmp = 1
+                # We'll add a dummy kpi in oder to have at least one fixed kpi with version/platform data.
+                get_metadata_and_add_datapoint(datapoints=datapoints,match=match,value_tmp=value_tmp,latest_datapoints=latest_datapoints,host=host,kpi_tags=kpi_tags)
+
+                if datapoints:   # Only insert datapoints if there is any :)
+                    insert_datapoints(datapoints)
+
 
 
 ################################################################################################
@@ -585,22 +657,35 @@ else:
     # unfrozen
     BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
+BASE_DIR_INPUT = BASE_DIR + "/data/"
+
 full_parser = argparse.ArgumentParser()
 full_parser.add_argument("--tag", nargs='+', help="Collect data from hosts that matches the tag")
 full_parser.add_argument("-c", "--console", action='store_true', help="Console logs enabled")
 full_parser.add_argument("-t", "--test", action='store_true', help="Use emulated Junos device")
 full_parser.add_argument("-s", "--start", action='store_true', help="Start collecting (default 'no')")
+full_parser.add_argument("-i", "--input", default= BASE_DIR_INPUT, help="Directory where to find input files")
+
 dynamic_args = vars(full_parser.parse_args())
+
+## Change BASE_DIR_INPUT if we are in "test" mode
+if dynamic_args['test']:
+    BASE_DIR_INPUT = dynamic_args['input']
 
 ################################################################################################
 # Loading YAML Default Variables
 ###############################################################################################
 
-default_variables_yaml_file = BASE_DIR + "/data/open-nti.variables.yaml"
+default_variables_yaml_file = BASE_DIR_INPUT + "open-nti.variables.yaml"
 default_variables = {}
 
-with open(default_variables_yaml_file) as f:
-    default_variables = yaml.load(f)
+try:
+    with open(default_variables_yaml_file) as f:
+        default_variables = yaml.load(f)
+except Exception, e:
+    logger.info('Error importing default variables file": %s', default_variables_yaml_file)
+    logging.exception(e)
+    sys.exit(0)
 
 db_schema = default_variables['db_schema']
 db_server = default_variables['db_server']
@@ -628,10 +713,8 @@ else:
     tag_list = [ ".*" ]
 
 if not(dynamic_args['start']):
-    logger.error('Mising <start> option, so nothing to do')
+    logger.error('Missing <start> option, so nothing to do')
     sys.exit(0)
-
-
 
 ################################################################################################
 # open-nti starts here start
@@ -656,28 +739,43 @@ if dynamic_args['console']:
 
 #  LOAD all credentials in a dict
 
-credentials_yaml_file = BASE_DIR + "/data/" + default_variables['credentials_file']
+credentials_yaml_file = BASE_DIR_INPUT + default_variables['credentials_file']
 credentials = {}
 logger.debug('Importing credentials file: %s ',credentials_yaml_file)
-with open(credentials_yaml_file) as f:
-    credentials = yaml.load(f)
-
+try:
+    with open(credentials_yaml_file) as f:
+        credentials = yaml.load(f)
+except Exception, e:
+    logger.error('Error importing credentials file: %s', credentials_yaml_file)
+ #   logging.exception(e)
+    sys.exit(0)  
 #  LOAD all hosts with their tags in a dic
 
-hosts_yaml_file = BASE_DIR + "/data/" + default_variables['hosts_file']
+hosts_yaml_file = BASE_DIR_INPUT + default_variables['hosts_file']
 hosts = {}
 logger.debug('Importing host file: %s ',hosts_yaml_file)
-with open(hosts_yaml_file) as f:
-    hosts = yaml.load(f)
+try:
+    with open(hosts_yaml_file) as f:
+        hosts = yaml.load(f)
+except Exception, e:
+    logger.error('Error importing host file: %s', hosts_yaml_file)
+    #logging.exception(e)
+    sys.exit(0)        
+
 
 #  LOAD all commands with their tags in a dict
 
-commands_yaml_file = BASE_DIR + "/data/" + default_variables['commands_file']
+commands_yaml_file = BASE_DIR_INPUT + default_variables['commands_file']
 commands = []
 logger.debug('Importing commands file: %s ',commands_yaml_file)
 with open(commands_yaml_file) as f:
-    for document in yaml.load_all(f):
-        commands.append(document)
+    try:
+        for document in yaml.load_all(f):
+            commands.append(document)
+    except Exception, e:
+        logger.error('Error importing commands file: %s', commands_yaml_file)
+#        logging.exception(e)
+        sys.exit(0)        
 
 general_commands = commands[0]
 
@@ -687,15 +785,25 @@ junos_parsers = []
 junos_parsers_yaml_files = os.listdir(BASE_DIR + "/" + default_variables['junos_parsers_dir'])
 logger.debug('Importing junos parsers file: %s ',junos_parsers_yaml_files)
 for junos_parsers_yaml_file in junos_parsers_yaml_files:
-    with open(BASE_DIR + "/" + default_variables['junos_parsers_dir'] + "/"  + junos_parsers_yaml_file) as f:
-        junos_parsers.append(yaml.load(f))
+    try:
+        with open(BASE_DIR + "/" + default_variables['junos_parsers_dir'] + "/"  + junos_parsers_yaml_file) as f:
+            junos_parsers.append(yaml.load(f))
+    except Exception, e:
+        logger.error('Error importing junos parser: %s', junos_parsers_yaml_file)
+ #       logging.exception(e)
+        pass
 
 pfe_parsers = []
 pfe_parsers_yaml_files = os.listdir(BASE_DIR + "/" + default_variables['pfe_parsers_dir'])
 logger.debug('Importing pfe parsers file: %s ',pfe_parsers_yaml_files)
 for pfe_parsers_yaml_file in pfe_parsers_yaml_files:
-    with open(BASE_DIR + "/" + default_variables['pfe_parsers_dir'] + "/" + pfe_parsers_yaml_file) as f:
-        pfe_parsers.append(yaml.load(f))
+    try:
+        with open(BASE_DIR + "/" + default_variables['pfe_parsers_dir'] + "/" + pfe_parsers_yaml_file) as f:
+            pfe_parsers.append(yaml.load(f))
+    except Exception, e:
+        logger.error('Error importing pfe parser: %s', pfe_parsers_yaml_file)
+ #       logging.exception(e)
+        pass
 
 if __name__ == "__main__":
 

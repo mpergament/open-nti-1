@@ -22,12 +22,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -75,7 +69,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.chassis.routing-engine.*.cpu-idle/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).chassis.routing-engine.*.cpu-idle/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -94,7 +88,8 @@
                 ]
               ],
               "series": "/$host_regex.chassis.routing-engine.*.cpu-idle/",
-              "tags": []
+              "tags": [],
+              "policy": "default"
             }
           ],
           "timeFrom": null,
@@ -102,15 +97,29 @@
           "title": "RE - CPU idle",
           "tooltip": {
             "shared": false,
-            "value_type": "cumulative"
+            "value_type": "cumulative",
+            "msResolution": false
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -120,12 +129,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -172,7 +175,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.chassis.routing-engine.*.memory-buffer-utilization/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).chassis.routing-engine.*.memory-buffer-utilization/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -191,7 +194,8 @@
                 ]
               ],
               "series": "/$host_regex.chassis.routing-engine.*.memory-buffer-utilization/",
-              "tags": []
+              "tags": [],
+              "policy": "default"
             }
           ],
           "timeFrom": null,
@@ -199,15 +203,29 @@
           "title": "RE - Memory Utilization",
           "tooltip": {
             "shared": false,
-            "value_type": "cumulative"
+            "value_type": "cumulative",
+            "msResolution": false
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -217,12 +235,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -269,7 +281,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.system.buffers.in_use.current_mbuf/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.system.buffers.in_use.current_mbuf/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -288,7 +300,8 @@
                 ]
               ],
               "series": "/$host_regex.re.system.buffers.in_use.current_mbuf/",
-              "tags": []
+              "tags": [],
+              "policy": "default"
             }
           ],
           "timeFrom": null,
@@ -296,15 +309,29 @@
           "title": "RE - buffers.in_use.current_mbuf",
           "tooltip": {
             "shared": false,
-            "value_type": "cumulative"
+            "value_type": "cumulative",
+            "msResolution": false
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -314,12 +341,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -366,7 +387,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.system.buffers.clusters_in_use.current_mbuf_clusters/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.system.buffers.clusters_in_use.current_mbuf_clusters/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -385,7 +406,8 @@
                 ]
               ],
               "series": "/$host_regex.re.system.buffers.clusters_in_use.current_mbuf_clusters/",
-              "tags": []
+              "tags": [],
+              "policy": "default"
             }
           ],
           "timeFrom": null,
@@ -393,15 +415,29 @@
           "title": "RE - buffers.clusters_in_use.current_mbuf_clusters",
           "tooltip": {
             "shared": false,
-            "value_type": "cumulative"
+            "value_type": "cumulative",
+            "msResolution": false
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -420,12 +456,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -472,7 +502,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.inet.0.actives/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.inet.0.actives/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -502,12 +532,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -517,12 +560,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -569,7 +606,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.inet.3.actives/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.inet.3.actives/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -599,12 +636,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -614,12 +664,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -666,7 +710,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.bgp.l3vpn.0.actives/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.bgp.l3vpn.0.actives/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -696,12 +740,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -711,12 +768,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -763,7 +814,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.inet.0.hidden/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.inet.0.hidden/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -793,12 +844,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -808,12 +872,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -860,7 +918,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.inet.3.hidden/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.inet.3.hidden/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -890,12 +948,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -905,12 +976,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -957,7 +1022,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.route-table.summary.bgp.l3vpn.0.hidden/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).route-table.summary.bgp.l3vpn.0.hidden/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -987,12 +1052,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -1011,12 +1089,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1063,7 +1135,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.rpd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.rpd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1093,12 +1165,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1108,12 +1193,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1160,7 +1239,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.cosd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.cosd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1190,12 +1269,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1205,12 +1297,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1257,7 +1343,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.dfwd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.dfwd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1287,12 +1373,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1302,12 +1401,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1354,7 +1447,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.dcd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.dcd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1384,12 +1477,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1399,12 +1505,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1451,7 +1551,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.mib2d-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.mib2d-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1481,12 +1581,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1496,12 +1609,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1548,7 +1655,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.snmpd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.snmpd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1578,12 +1685,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1593,12 +1713,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1645,7 +1759,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.smid-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.smid-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1675,12 +1789,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1690,12 +1817,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1742,7 +1863,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.smihelperd-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.smihelperd-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1772,12 +1893,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1787,12 +1921,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1839,7 +1967,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.re.memory.sampled-SIZE/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).re.memory.sampled-SIZE/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1869,12 +1997,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -1893,12 +2034,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1945,7 +2080,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.pfe-.*-packets/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.pfe-.*-packets/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1975,12 +2110,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -1990,12 +2138,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2042,7 +2184,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.hardware-input-drops/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.hardware-input-drops/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2072,12 +2214,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2087,12 +2242,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2139,7 +2288,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-control-drops/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-control-drops/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2169,12 +2318,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2184,12 +2346,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2236,7 +2392,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-high-drops/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-high-drops/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2266,12 +2422,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2281,12 +2450,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2333,7 +2496,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-medium-drops/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-medium-drops/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2363,12 +2526,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2378,12 +2554,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2430,7 +2600,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-low-drops/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-local-traffic-stats.software-input-low-drops/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2460,12 +2630,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -2484,12 +2667,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2537,7 +2714,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-traffic-stats.pfe-.*-packets/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-traffic-stats.pfe-.*-packets/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2567,12 +2744,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2582,12 +2772,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2635,7 +2819,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.pfe-general-stats.aggregated.pfe-traffic-stats.*-pps/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).pfe-general-stats.aggregated.pfe-traffic-stats.*-pps/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2665,12 +2849,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2680,12 +2877,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2733,7 +2924,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.bits-to-test-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.bits-to-test-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2763,12 +2954,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2778,12 +2982,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2831,7 +3029,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.data-error-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.data-error-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2861,12 +3059,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2876,12 +3087,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -2929,7 +3134,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.stack-underflow-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.stack-underflow-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2959,12 +3164,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -2974,12 +3192,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3027,7 +3239,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.stack-overflow-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.stack-overflow-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3057,12 +3269,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3072,12 +3297,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3125,7 +3344,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.bad-route-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.bad-route-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3155,12 +3374,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3170,12 +3402,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3223,7 +3449,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex..pfe-general-stats.aggregated.pfe-hardware-discards-stats.nexthop-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex)..pfe-general-stats.aggregated.pfe-hardware-discards-stats.nexthop-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3253,12 +3479,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3268,12 +3507,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3321,7 +3554,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.invalid-iif-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.invalid-iif-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3351,12 +3584,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3366,12 +3612,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3419,7 +3659,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.info-cell-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.info-cell-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3449,12 +3689,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3464,12 +3717,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3518,7 +3765,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.fabric-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.fabric-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3549,12 +3796,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3564,12 +3824,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3617,7 +3871,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.timeout-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.timeout-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3647,12 +3901,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3662,12 +3929,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3715,7 +3976,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.pfe-general-stats.aggregated.pfe-hardware-discards-stats.truncated-key-discard/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).pfe-general-stats.aggregated.pfe-hardware-discards-stats.truncated-key-discard/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3745,12 +4006,25 @@
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -3769,12 +4043,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3822,7 +4090,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.fpc.slot.*.resource.used-heap-mem-percent/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).fpc.slot.*.resource.used-heap-mem-percent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3852,12 +4120,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3867,12 +4148,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -3920,7 +4195,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.fpc.slot.*.pfe.*.resource.used-ifl-counter-percent/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).fpc.slot.*.pfe.*.resource.used-ifl-counter-percent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3950,12 +4225,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -3965,12 +4253,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4018,7 +4300,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.fpc.slot.*.pfe.*.resource.used-filter-counter-percent/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).fpc.slot.*.pfe.*.resource.used-filter-counter-percent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4048,12 +4330,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -4072,12 +4367,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4124,7 +4413,7 @@
                 }
               ],
               "measurement": "/$host_regex.snmp-.*-packets/",
-              "query": "SELECT mean(\"delta\") FROM /$host_regex.snmp-.*-packets/ WHERE $timeFilter GROUP BY time($interval) fill(null)",
+              "query": "SELECT mean(\"delta\") from /($host_regex).snmp-.*-packets/ WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4153,12 +4442,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4168,12 +4470,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4220,7 +4516,7 @@
                 }
               ],
               "measurement": "/$host_regex.snmp-input-get-nexts/",
-              "query": "SELECT mean(\"delta\") FROM /$host_regex.snmp-input-get-nexts/ WHERE $timeFilter GROUP BY time($interval) fill(null)",
+              "query": "SELECT mean(\"delta\") from /($host_regex).snmp-input-get-nexts/ WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4249,12 +4545,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -4273,12 +4582,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4326,7 +4629,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.Totals.packets-sent/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.Totals.packets-sent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4356,12 +4659,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4371,12 +4687,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4424,7 +4734,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.Totals.packets-received/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.Totals.packets-received/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4454,12 +4764,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4469,12 +4792,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4522,7 +4839,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.Totals.packets-retransmitted/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.Totals.packets-retransmitted/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4552,12 +4869,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4567,12 +4897,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4620,7 +4944,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.Totals.packets-dropped/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.Totals.packets-dropped/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4650,12 +4974,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4665,12 +5002,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4718,7 +5049,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.Totals.packets-processed/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.Totals.packets-processed/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4748,12 +5079,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4763,12 +5107,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4816,7 +5154,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.general.fragments-rebuilt/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.general.fragments-rebuilt/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4846,12 +5184,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4861,12 +5212,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -4914,7 +5259,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.general.spf-runs/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.general.spf-runs/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4944,12 +5289,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -4959,12 +5317,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5012,7 +5364,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.protocols.isis.statistics.general.lsps-regenerated/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).protocols.isis.statistics.general.lsps-regenerated/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5042,12 +5394,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -5066,12 +5431,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5118,7 +5477,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.protocols.bgp.summary.peer-count/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).protocols.bgp.summary.peer-count/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5148,12 +5507,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5163,12 +5535,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5215,7 +5581,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.protocols.bgp.summary.group-count/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).protocols.bgp.summary.group-count/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5245,12 +5611,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5260,12 +5639,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5312,7 +5685,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.protocols.bgp.summary.down-peer-count/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).protocols.bgp.summary.down-peer-count/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5342,12 +5715,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -5366,12 +5752,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5418,7 +5798,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.by-port.port-total/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.by-port.port-total/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5436,24 +5816,37 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.by-port.port-total/",
+              "series": "/$host_regex.bng.subscribers.summary.by-port.port-total/",
               "tags": []
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "BNG total subscriber",
+          "title": "BNG total subscribers",
           "tooltip": {
             "shared": false,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5463,12 +5856,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5515,7 +5902,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.l2tp-sessions/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.l2tp-sessions/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5533,7 +5920,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.l2tp-sessions/",
+              "series": "/$host_regex.bng.subscribers.summary.l2tp-sessions/",
               "tags": []
             }
           ],
@@ -5545,12 +5932,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5560,12 +5960,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5612,7 +6006,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.l2tp-tunnels/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.l2tp-tunnels/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5630,7 +6024,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.l2tp-tunnels/",
+              "series": "/$host_regex.bng.subscribers.summary.l2tp-tunnels/",
               "tags": []
             }
           ],
@@ -5642,12 +6036,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5657,12 +6064,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5709,7 +6110,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.session-state-init/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.session-state-init/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5727,7 +6128,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.session-state-init/",
+              "series": "/$host_regex.bng.subscribers.summary.session-state-init/",
               "tags": []
             }
           ],
@@ -5739,12 +6140,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5754,12 +6168,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5806,7 +6214,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.session-state-configured/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.session-state-configured/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5824,7 +6232,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.session-state-configured/",
+              "series": "/$host_regex.bng.subscribers.summary.session-state-configured/",
               "tags": []
             }
           ],
@@ -5836,12 +6244,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5851,12 +6272,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -5903,7 +6318,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.session-state-terminating/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.session-state-terminating/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5921,7 +6336,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.session-state-terminating/",
+              "series": "/$host_regex.bng.subscribers.summary.session-state-terminating/",
               "tags": []
             }
           ],
@@ -5933,12 +6348,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -5948,12 +6376,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6000,7 +6422,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.bng.subscriber.summary.session-state-terminated/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.subscribers.summary.session-state-terminated/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6018,7 +6440,7 @@
                   }
                 ]
               ],
-              "series": "/$host_regex.bng.subscriber.summary.session-state-terminated/",
+              "series": "/$host_regex.bng.subscribers.summary.session-state-terminated/",
               "tags": []
             }
           ],
@@ -6030,16 +6452,29 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
-      "title": "BNG Subscriber Statistics"
+      "title": "BNG Subscribers Statistics"
     },
     {
       "collapse": true,
@@ -6054,12 +6489,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6107,7 +6536,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.padi-received/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.padi-received/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6137,12 +6566,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6152,12 +6594,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6205,7 +6641,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.pado-sent/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.pado-sent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6235,12 +6671,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6250,12 +6699,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6303,7 +6746,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.padr-received/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.padr-received/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6333,12 +6776,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6348,12 +6804,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6401,7 +6851,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.pads-sent/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.pads-sent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6431,12 +6881,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6446,12 +6909,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6499,7 +6956,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.padt-received/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.padt-received/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6529,12 +6986,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6544,12 +7014,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6597,7 +7061,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.pppoe.statistics.padt-sent/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.pppoe.statistics.padt-sent/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6627,12 +7091,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -6651,12 +7128,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6703,7 +7174,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.authentication-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.authentication-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6733,12 +7204,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6748,12 +7232,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6800,7 +7278,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.authentication-rollover-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.authentication-rollover-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6830,12 +7308,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6845,12 +7336,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6897,7 +7382,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.authentication-retransmissions/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.authentication-retransmissions/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -6927,12 +7412,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -6942,12 +7440,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -6994,7 +7486,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accepts/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accepts/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7024,12 +7516,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7039,12 +7544,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7091,7 +7590,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.rejects/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.rejects/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7121,12 +7620,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7136,12 +7648,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7188,7 +7694,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.authentication-timeouts/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.authentication-timeouts/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7218,12 +7724,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7233,12 +7752,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7285,7 +7798,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.authentication-packets-dropped/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.authentication-packets-dropped/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7315,12 +7828,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -7339,12 +7865,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7391,7 +7911,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-start-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-start-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7421,12 +7941,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7436,12 +7969,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7488,7 +8015,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-interim-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-interim-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7518,12 +8045,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7533,12 +8073,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7585,7 +8119,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-stop-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-stop-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7615,12 +8149,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7630,12 +8177,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7682,7 +8223,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-rollover-requests/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-rollover-requests/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7712,12 +8253,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7727,12 +8281,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7779,7 +8327,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-retransmissions/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-retransmissions/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7809,12 +8357,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7824,12 +8385,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7876,7 +8431,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-interim-response/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-interim-response/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -7906,12 +8461,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -7921,12 +8489,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -7973,7 +8535,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-stop-response/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-stop-response/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8003,12 +8565,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8018,12 +8593,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8070,7 +8639,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(delta) from /$host_regex.bng.aaa.radius-servers-stats.*.accounting-timeouts/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.radius-servers-stats.*.accounting-timeouts/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8100,12 +8669,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -8124,12 +8706,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8177,7 +8753,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.bng.aaa.stats.address-assignment.pool.pool-usage/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.aaa.stats.address-assignment.pool.pool-usage/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8207,12 +8783,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8222,12 +8811,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8275,7 +8858,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(delta) from /$host_regex.bng.aaa.stats.address-assignment.pool.out-of-addresses/ where $timeFilter group by time($interval)",
+              "query": "select mean(delta) from /($host_regex).bng.aaa.stats.address-assignment.pool.out-of-addresses/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8305,12 +8888,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8320,12 +8916,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8373,7 +8963,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.bng.aaa.stats.address-assignment.pool.used-addresses/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).bng.aaa.stats.address-assignment.pool.used-addresses/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8403,12 +8993,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -8427,12 +9030,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8480,7 +9077,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.flow-analysis.*.num-total-flows-active/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.flow-analysis.*.num-total-flows-active/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8510,12 +9107,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8525,12 +9135,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8578,7 +9182,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.flow-analysis.*.num-created-flows-per-sec/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.flow-analysis.*.num-created-flows-per-sec/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8608,12 +9212,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8623,12 +9240,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8676,7 +9287,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.flow-analysis.*.num-deleted-flows-per-sec/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.flow-analysis.*.num-deleted-flows-per-sec/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8706,12 +9317,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8721,12 +9345,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8774,7 +9392,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.subscriber-analysis..*.num-total-subs-active/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.subscriber-analysis..*.num-total-subs-active/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8804,12 +9422,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8819,12 +9450,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8872,7 +9497,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.subscriber-analysis..*.num-created-subs-per-sec/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.subscriber-analysis..*.num-created-subs-per-sec/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -8902,12 +9527,25 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         },
         {
           "aliasColors": {},
@@ -8917,12 +9555,6 @@
           "error": false,
           "fill": 0,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -8970,7 +9602,7 @@
                 }
               ],
               "interval": "",
-              "query": "select mean(value) from /$host_regex.cgnat.subscriber-analysis..*.num-deleted-subs-per-sec/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).cgnat.subscriber-analysis..*.num-deleted-subs-per-sec/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -9000,19 +9632,32 @@
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
       "title": "CGNAT statistics"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "editable": true,
       "height": "250px",
       "panels": [
@@ -9024,12 +9669,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -9064,7 +9703,7 @@
               "dsType": "influxdb",
               "groupBy": [],
               "measurement": "/$host_regex$/.rpm.*.max-delay",
-              "query": "select mean(value) from /$host_regex.rpm.*.max-delay/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).rpm.*.max-delay/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -9078,7 +9717,8 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [],
+              "policy": "default"
             },
             {
               "dsType": "influxdb",
@@ -9096,7 +9736,7 @@
                   "type": "fill"
                 }
               ],
-              "query": "select mean(value) from /$host_regex.rpm.*.min-delay/ where $timeFilter group by time($interval)",
+              "query": "select mean(value) from /($host_regex).rpm.*.min-delay/ where $timeFilter group by time($interval)",
               "rawQuery": true,
               "refId": "B",
               "resultFormat": "time_series",
@@ -9114,7 +9754,8 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [],
+              "policy": "default"
             }
           ],
           "timeFrom": null,
@@ -9122,15 +9763,29 @@
           "title": "RPM Probes",
           "tooltip": {
             "shared": true,
-            "value_type": "cumulative"
+            "value_type": "cumulative",
+            "msResolution": false
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "µs",
-            "short"
-          ]
+          "yaxes": [
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "µs"
+            },
+            {
+              "show": true,
+              "min": null,
+              "max": null,
+              "logBase": 1,
+              "format": "short"
+            }
+          ],
+          "xaxis": {
+            "show": true
+          }
         }
       ],
       "showTitle": true,
@@ -9177,35 +9832,31 @@
     "list": [
       {
         "allFormat": "glob",
+        "allValue": "",
         "current": {
-          "text": "MX-RE0",
-          "value": "MX-RE0"
+          "text": "None",
+          "value": "",
+          "isNone": true
         },
         "datasource": "influxdb",
-        "includeAll": false,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
         "name": "host_regex",
         "options": [
           {
-            "text": "MX-RE0",
-            "value": "MX-RE0",
+            "text": "None",
+            "value": "",
+            "isNone": true,
             "selected": true
-          },
-          {
-            "text": "QFX5100",
-            "value": "QFX5100",
-            "selected": false
-          },
-          {
-            "text": "jnpr",
-            "value": "jnpr",
-            "selected": false
           }
         ],
         "query": "SHOW TAG VALUES WITH KEY = \"device\"",
-        "refresh": true,
+        "refresh": 1,
         "refresh_on_load": false,
         "regex": "",
-        "type": "query"
+        "type": "query",
+        "hide": 0
       }
     ]
   },
@@ -9227,7 +9878,7 @@
     ]
   },
   "refresh": "1m",
-  "schemaVersion": 8,
+  "schemaVersion": 12,
   "version": 0,
   "links": []
 }

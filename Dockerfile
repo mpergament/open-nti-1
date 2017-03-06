@@ -2,21 +2,24 @@ FROM phusion/baseimage:0.9.18
 MAINTAINER Damien Garros <dgarros@gmail.com>
 
 RUN     apt-get -y update && \
-        apt-get -y upgrade
+        apt-get -y upgrade && \
+        apt-get clean   &&\
+        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # dependencies
-RUN     apt-get -y --force-yes install \
-        git adduser libfontconfig wget make curl
+RUN     apt-get -y update && \
+        apt-get -y install \
+        git adduser libfontconfig wget make curl && \
+        apt-get clean   &&\
+        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN     rm -f /etc/service/sshd/down
 RUN     /usr/sbin/enable_insecure_key
 
 # Latest version
-ENV GRAFANA_VERSION 2.6.0
-ENV INFLUXDB_VERSION 0.9.6.1
-ENV TELEGRAF_VERSION 0.10.1-1
-ENV FLUENTD_VERSION 0.12.20
-ENV FLUENTD_JUNIPER_VERSION 0.2.6-beta
+ENV GRAFANA_VERSION 4.1.2-1486989747
+ENV INFLUXDB_VERSION 1.2.0
+ENV TELEGRAF_VERSION 1.2.1
 
 RUN     apt-get -y update && \
         apt-get -y install \
@@ -32,12 +35,14 @@ RUN     apt-get -y update && \
             tcpdump \
             tree \
             nginx-light \
-            ruby \
-            ruby-dev \
             snmp \
-            zlib1g-dev
+            zlib1g-dev \
+            libffi-dev \
+            libssl-dev && \
+        apt-get clean   &&\
+        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install some python modules
+# # Install some python modules
 RUN     pip install influxdb && \
         pip install xmltodict && \
         pip install pexpect && \
@@ -46,12 +51,13 @@ RUN     pip install influxdb && \
         pip install python-crontab && \
         pip install junos-eznc && \
         pip install pytest && \
-        pip install mock
+        pip install mock &&\
+        pip install cryptography==1.2.1
 
 RUN     mkdir /src
 
 ########################
-# Install Grafana
+### Install Grafana
 ########################
 RUN     mkdir /src/grafana                                                                                    &&\
         mkdir /opt/grafana                                                                                    &&\
@@ -59,30 +65,13 @@ RUN     mkdir /src/grafana                                                      
         tar -xzf /src/grafana.tar.gz -C /opt/grafana --strip-components=1                                     &&\
         rm /src/grafana.tar.gz
 
-########################
-### Install Fluentd  ###
-########################
-
-# RUN     gem install fluentd fluent-plugin-influxdb --no-ri --no-rdoc
-RUN     gem install --no-ri --no-rdoc \
-            fluentd -v ${FLUENTD_VERSION} && \
-        gem install --no-ri --no-rdoc \
-            influxdb \
-            rake \
-            bundler \
-            protobuf \
-            statsd-ruby \
-            dogstatsd-ruby \
-            fluent-plugin-newsyslog \
-            fluent-plugin-rewrite-tag-filter
-
-ADD     docker/fluentd/fluentd.launcher.sh /etc/service/fluentd/run
+RUN     /opt/grafana/bin/grafana-cli plugins install grafana-piechart-panel
 
 ########################
 ### Install InfluxDB ###
 ########################
 
-RUN     curl -s -o /tmp/influxdb_latest_amd64.deb https://s3.amazonaws.com/influxdb/influxdb_${INFLUXDB_VERSION}_amd64.deb && \
+RUN     curl -s -o /tmp/influxdb_latest_amd64.deb https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb && \
         dpkg -i /tmp/influxdb_latest_amd64.deb && \
         rm /tmp/influxdb_latest_amd64.deb
 
@@ -97,7 +86,7 @@ ADD     docker/influxdb/influxdb.launcher.sh /etc/service/influxdb/run
 ### Install telegraf ###
 ########################
 
-RUN     curl -s -o /tmp/telegraf_latest_amd64.deb http://get.influxdb.org/telegraf/telegraf_${TELEGRAF_VERSION}_amd64.deb && \
+RUN     curl -s -o /tmp/telegraf_latest_amd64.deb https://dl.influxdata.com/telegraf/releases/telegraf_${TELEGRAF_VERSION}_amd64.deb && \
         dpkg -i /tmp/telegraf_latest_amd64.deb && \
         rm /tmp/telegraf_latest_amd64.deb
 
@@ -127,49 +116,25 @@ ADD     docker/nginx/run.sh /etc/service/nginx/run
 ### open-nti python scripts (for gathering informatino from server to router)  ###
 ADD     open-nti/open-nti.py /opt/open-nti/open-nti.py
 ADD     open-nti/startcron.py /opt/open-nti/startcron.py
+ADD     tests/main/pyez_mock.py /opt/open-nti/pyez_mock.py
 
 ### Add test files
 RUN     mkdir /opt/open-nti/tests
 
 # ################
 
-RUN     chmod +x /etc/service/fluentd/run       &&\
-        chmod +x /etc/service/nginx/run         &&\
+RUN     chmod +x /etc/service/nginx/run         &&\
         chmod +x /etc/service/grafana/run       &&\
         chmod +x /etc/my_init.d/grafana.init.sh &&\
         chmod +x /etc/service/influxdb/run      &&\
         chmod +x /etc/service/telegraf/run      &&\
         chmod +x /influxdbrun.sh
 
-#######
-### Copy files that change often
-######
-
-RUN     mkdir /etc/fluent && \
-        mkdir /etc/fluent/plugin
-
-ADD     docker/fluentd/fluent.conf /etc/fluent/fluent.conf
-ADD     docker/fluentd/fluent.conf /fluent/fluent.conf
-RUN     fluentd --setup
-
-ADD     docker/fluentd/plugin/out_influxdb.rb       /etc/fluent/plugin/out_influxdb.rb
-ADD     docker/fluentd/plugin/out_statsd.rb         /etc/fluent/plugin/out_statsd.rb
-
-WORKDIR /tmp
-RUN     wget -O /tmp/fluent-plugin-juniper-telemetry.tar.gz https://github.com/JNPRAutomate/fluent-plugin-juniper-telemetry/archive/v${FLUENTD_JUNIPER_VERSION}.tar.gz &&\
-        tar -xzf /tmp/fluent-plugin-juniper-telemetry.tar.gz                &&\
-        cd /tmp/fluent-plugin-juniper-telemetry-${FLUENTD_JUNIPER_VERSION}  &&\
-        rake install
-
-RUN     apt-get clean   &&\
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 WORKDIR /
 ENV HOME /root
 ENV SSL_SUPPORT **False**
 ENV SSL_CERT **None**
 RUN chmod -R 777 /var/log/
-
 
 # ## Graphana
 EXPOSE 80

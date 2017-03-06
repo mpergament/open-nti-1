@@ -1,24 +1,53 @@
 #! /bin/bash
 
 ## Image and container
-IMAGE_NAME='juniper/open-nti'
-CONTAINER_NAME='open-nti_con'
+export MAIN_IMAGE_NAME=juniper/open-nti
+export MAIN_CONTAINER_NAME=opennti_con
+
+export INPUT_JTI_DIR=plugins/input-jti
+export INPUT_JTI_IMAGE_NAME=juniper/open-nti-input-jti
+export INPUT_JTI_CONTAINER_NAME=opennti_input_jti
+
+export INPUT_SYSLOG_DIR=plugins/input-syslog
+export INPUT_SYSLOG_IMAGE_NAME=juniper/open-nti-input-syslog
+export INPUT_SYSLOG_CONTAINER_NAME=opennti_input_syslog
+
+export INPUT_NETCONF_DIR=plugins/input-netconf
+export INPUT_NETCONF_IMAGE_NAME=juniper/open-nti-input-netconf
+export INPUT_NETCONF_CONTAINER_NAME=opennti_input_netconf
+
+export INPUT_OC_DIR=plugins/input-oc
+export INPUT_OC_IMAGE_NAME=juniper/open-nti-input-oc
+export INPUT_OC_CONTAINER_NAME=opennti_input_oc
+
+export INPUT_INTERNAL_DIR=plugins/input-internal
+export INPUT_INTERNAL_IMAGE_NAME=juniper/open-nti-input-internal
+export INPUT_INTERNAL_CONTAINER_NAME=opennti_input_internal
+
+export LB_UDP_DIR=plugins/lb-udp
+export LB_UDP_IMAGE_NAME=juniper/open-nti-lb-udp
+export LB_UDP_CONTAINER_NAME=opennti_lb_udp
+
+export MAIN_CONTAINER_NAME=opennti_con
+
+export DOCKER_COMPOSE_FILE=docker-compose.yml
 
 ## Local ports that will be redirected to the Open NTI
 ## Startup will fail if some ports are already in use
-LOCAL_PORT_JTI=50000
-LOCAL_PORT_NA=50010
-LOCAL_PORT_ANALYTICSD=50020
-LOCAL_PORT_STATSD=8125
-LOCAL_PORT_EVENT=6000
-LOCAL_PORT_GRAFANA=3000
-LOCAL_PORT_INFLUXDB=8083
-LOCAL_PORT_INFLUXDB_API=8086
-LOCAL_PORT_SSH=22222
+export LOCAL_PORT_JTI=50000
+export LOCAL_PORT_NA=50010
+export LOCAL_PORT_ANALYTICSD=50020
+export LOCAL_PORT_STATSD=8125
+export LOCAL_PORT_EVENT=6000
+export LOCAL_PORT_GRAFANA=3000
+export LOCAL_PORT_INFLUXDB=8083
+export LOCAL_PORT_INFLUXDB_API=8086
+export LOCAL_PORT_NGINX=80
+export LOCAL_PORT_SSH=22222
 
 ## Local directories that will be mapped into the container
-LOCAL_DIR_DATA='data'
-LOCAL_DIR_LOG='logs'
-LOCAL_DIR_DB='db'
-LOCAL_DIR_TESTS='tests'
-LOCAL_DIR_DASHBOARD='dashboards'
+export LOCAL_DIR_DATA=data
+export LOCAL_DIR_LOG=logs
+export LOCAL_DIR_DB=db
+export LOCAL_DIR_TESTS=tests
+export LOCAL_DIR_DASHBOARD=dashboards

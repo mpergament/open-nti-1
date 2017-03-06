@@ -1,0 +1,60 @@
+
+input-jti:
+  image: $INPUT_JTI_IMAGE_NAME:$IMAGE_TAG
+  container_name: $INPUT_JTI_CONTAINER_NAME
+  environment:
+   - "INFLUXDB_ADDR=opennti"
+   - "OUTPUT_INFLUXDB=true"
+   - "OUTPUT_STDOUT=false"
+  ports:
+   - "$LOCAL_PORT_JTI:50000/udp"
+   - "$LOCAL_PORT_ANALYTICSD:50020/udp"
+  volumes:
+   - /etc/localtime:/etc/localtime
+  links:
+   - opennti
+
+input-syslog:
+  image: $INPUT_SYSLOG_IMAGE_NAME:$IMAGE_TAG
+  container_name: $INPUT_SYSLOG_CONTAINER_NAME
+  environment:
+   - "INFLUXDB_ADDR=opennti"
+   - "OUTPUT_INFLUXDB=true"
+   - "OUTPUT_STDOUT=false"
+  ports:
+   - "$LOCAL_PORT_EVENT:6000/udp"
+  volumes:
+   - /etc/localtime:/etc/localtime
+  links:
+   - opennti
+
+input-internal:
+#  image: $INPUT_INTERNAL_IMAGE_NAME:$IMAGE_TAG
+  build: $INPUT_INTERNAL_DIR
+  container_name: $INPUT_INTERNAL_CONTAINER_NAME
+  environment:
+    - "HOST_PROC=/rootfs/proc"
+    - "HOST_SYS=/rootfs/sys"
+    - "HOST_ETC=/rootfs/etc"
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /sys:/rootfs/sys:ro
+    - /proc:/rootfs/proc:ro
+    - /etc:/rootfs/etc:ro
+  links:
+    - opennti
+
+opennti:
+  image: $MAIN_IMAGE_NAME:$IMAGE_TAG
+  container_name: $MAIN_CONTAINER_NAME
+  volumes:
+   - ./$LOCAL_DIR_DASHBOARD:/src/dashboards
+   - ./$LOCAL_DIR_DATA:/opt/open-nti/data
+   - /etc/localtime:/etc/localtime
+  ports:
+   - "$LOCAL_PORT_STATSD:8125/udp"
+   - "$LOCAL_PORT_NGINX:80"
+   - "$LOCAL_PORT_GRAFANA:3000"
+   - "$LOCAL_PORT_INFLUXDB:8083"
+   - "$LOCAL_PORT_INFLUXDB_API:8086"
